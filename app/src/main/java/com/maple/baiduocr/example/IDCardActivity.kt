@@ -17,13 +17,13 @@ import com.baidu.ocr.sdk.model.IDCardResult
 import com.baidu.ocr.ui.camera.CameraActivity
 import com.baidu.ocr.ui.camera.CameraNativeHelper
 import com.baidu.ocr.ui.camera.CameraView
-import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.PathUtils
 import com.maple.baiduocr.R
 import java.io.File
 
 class IDCardActivity :AppCompatActivity(), View.OnClickListener {
     private var tvContent:TextView? = null
+    private val type:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +76,7 @@ class IDCardActivity :AppCompatActivity(), View.OnClickListener {
         intent.putExtra(CameraActivity.KEY_NATIVE_ENABLE,true)
         intent.putExtra(CameraActivity.KEY_NATIVE_MANUAL,true)
         intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,CameraActivity.CONTENT_TYPE_ID_CARD_FRONT)
+        intent.putExtra(CameraActivity.KEY_CAMERA_TYPE, type)
         startActivityForResult(intent,REQUEST_CODE_CAMERA)
     }
 
@@ -90,6 +91,7 @@ class IDCardActivity :AppCompatActivity(), View.OnClickListener {
         intent.putExtra(CameraActivity.KEY_NATIVE_ENABLE,true)
         intent.putExtra(CameraActivity.KEY_NATIVE_MANUAL,true)
         intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,CameraActivity.CONTENT_TYPE_ID_CARD_BACK)
+        intent.putExtra(CameraActivity.KEY_CAMERA_TYPE, type)
         startActivityForResult(intent,REQUEST_CODE_CAMERA)
     }
 

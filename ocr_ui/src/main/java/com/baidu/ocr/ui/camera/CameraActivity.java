@@ -36,6 +36,7 @@ import androidx.core.app.ActivityCompat;
 
 public class CameraActivity extends Activity {
 
+    public static final String KEY_CAMERA_TYPE = "cameraType";
     public static final String KEY_OUTPUT_FILE_PATH = "outputFilePath";
     public static final String KEY_CONTENT_TYPE = "contentType";
     public static final String KEY_NATIVE_TOKEN = "nativeToken";
@@ -80,11 +81,16 @@ public class CameraActivity extends Activity {
     };
 
 
+    private int type = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bd_ocr_activity_camera);
+        type = getIntent().getIntExtra(KEY_CAMERA_TYPE,0);
+        if(type == 1){
+            setContentView(R.layout.bd_ocr_activity_camera_take);
+        }else {
+            setContentView(R.layout.bd_ocr_activity_camera_ocr);
+        }
 
         takePictureContainer = (OCRCameraLayout) findViewById(R.id.take_picture_container);
         confirmResultContainer = (OCRCameraLayout) findViewById(R.id.confirm_result_container);
@@ -247,19 +253,22 @@ public class CameraActivity extends Activity {
     private View.OnClickListener albumButtonOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    ActivityCompat.requestPermissions(CameraActivity.this,
-                            new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
-                            PERMISSIONS_EXTERNAL_STORAGE);
-                    return;
+            if(type == 1){
+                finish();
+            }else {
+                if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        ActivityCompat.requestPermissions(CameraActivity.this,
+                                new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
+                                PERMISSIONS_EXTERNAL_STORAGE);
+                        return;
+                    }
                 }
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
             }
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
         }
     };
 
