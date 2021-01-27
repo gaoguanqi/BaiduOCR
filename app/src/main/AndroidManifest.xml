@@ -31,6 +31,13 @@
 
         <activity android:name=".example.TakeIDCardActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".example.QRCodeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".example.MyCaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CaptureTheme" />
     </application>
 
 </manifest>

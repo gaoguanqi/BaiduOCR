@@ -15,6 +15,7 @@ import com.baidu.ocr.ui.camera.CameraNativeHelper
 import com.baidu.ocr.ui.camera.CameraView
 import com.maple.baiduocr.example.BankCardActivity
 import com.maple.baiduocr.example.IDCardActivity
+import com.maple.baiduocr.example.QRCodeActivity
 import com.maple.baiduocr.example.TakeIDCardActivity
 import com.maple.baiduocr.utils.LogUtils
 import com.maple.baiduocr.utils.PermissionUtil
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         this.findViewById<Button>(R.id.btn_idcard)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_bankcard)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_take_idcard)?.setOnClickListener(this)
+        this.findViewById<Button>(R.id.btn_qrcode)?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -47,6 +49,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_take_idcard ->{
                 applyPermissions(2)
+            }
+
+            R.id.btn_qrcode ->{
+                applyPermissions(3)
             }
         }
     }
@@ -64,6 +70,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     2 ->{
                         startActivity(Intent(this@MainActivity,TakeIDCardActivity::class.java))
+                    }
+                    3 ->{
+                        startActivity(Intent(this@MainActivity,QRCodeActivity::class.java))
                     }
                 }
             }

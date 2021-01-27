@@ -26,4 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="拍照身份证" />
+
+    <Button
+        android:id="@+id/btn_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫码" />
 </LinearLayout>
