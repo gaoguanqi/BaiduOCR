@@ -32,4 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="扫码" />
+    <Button
+        android:id="@+id/btn_license_plate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="车牌" />
+    <Button
+        android:id="@+id/btn_receipt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通用票据" />
 </LinearLayout>

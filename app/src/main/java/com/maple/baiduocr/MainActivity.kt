@@ -13,10 +13,7 @@ import com.baidu.ocr.sdk.exception.OCRError
 import com.baidu.ocr.sdk.model.AccessToken
 import com.baidu.ocr.ui.camera.CameraNativeHelper
 import com.baidu.ocr.ui.camera.CameraView
-import com.maple.baiduocr.example.BankCardActivity
-import com.maple.baiduocr.example.IDCardActivity
-import com.maple.baiduocr.example.QRCodeActivity
-import com.maple.baiduocr.example.TakeIDCardActivity
+import com.maple.baiduocr.example.*
 import com.maple.baiduocr.utils.LogUtils
 import com.maple.baiduocr.utils.PermissionUtil
 import com.maple.baiduocr.utils.RequestPermission
@@ -35,6 +32,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         this.findViewById<Button>(R.id.btn_bankcard)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_take_idcard)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_qrcode)?.setOnClickListener(this)
+        this.findViewById<Button>(R.id.btn_license_plate)?.setOnClickListener(this)
+        this.findViewById<Button>(R.id.btn_receipt)?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -53,6 +52,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_qrcode ->{
                 applyPermissions(3)
+            }
+
+            R.id.btn_license_plate ->{
+                applyPermissions(4)
+            }
+
+            R.id.btn_receipt ->{
+                applyPermissions(5)
             }
         }
     }
@@ -73,6 +80,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                     3 ->{
                         startActivity(Intent(this@MainActivity,QRCodeActivity::class.java))
+                    }
+                    4 ->{
+                        startActivity(Intent(this@MainActivity,LicensePlateActivity::class.java))
+                    }
+                    5 ->{
+                        startActivity(Intent(this@MainActivity,ReceiptActivity::class.java))
                     }
                 }
             }

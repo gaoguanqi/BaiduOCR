@@ -34,3 +34,16 @@
 
 -keep class com.baidu.ocr.sdk.**{*;}
 -dontwarn com.baidu.ocr.**
+
+#ZXingLite
+-dontwarn com.king.zxing.**
+-keep class com.king.zxing.**{ *;}
+-keepattributes InnerClasses
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+#ZXing
+-dontwarn com.google.zxing.**
+-keep class com.google.zxing.**{ *;}

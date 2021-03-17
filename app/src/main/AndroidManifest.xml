@@ -38,6 +38,13 @@
         <activity android:name=".example.MyCaptureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CaptureTheme" />
+
+
+        <activity android:name=".example.LicensePlateActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".example.ReceiptActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
