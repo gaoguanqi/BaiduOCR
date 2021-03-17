@@ -11,6 +11,7 @@ import com.baidu.ocr.ui.camera.CameraActivity
 import com.blankj.utilcode.util.PathUtils
 import com.maple.baiduocr.R
 import com.maple.baiduocr.utils.RecognizeService
+import java.io.File
 
 class ReceiptActivity: AppCompatActivity(), View.OnClickListener {
     private var tvContent: TextView? = null
@@ -36,6 +37,11 @@ class ReceiptActivity: AppCompatActivity(), View.OnClickListener {
     private val REQUEST_CODE_RECEIPT = 113
 
     private fun openReceipt() {
+        val directory: File = File(filePath)
+        if(!directory.exists() || directory.isFile){
+            directory.mkdir()
+        }
+
         val intent: Intent = Intent(this, CameraActivity::class.java)
         intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,pathCard)
         intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL)

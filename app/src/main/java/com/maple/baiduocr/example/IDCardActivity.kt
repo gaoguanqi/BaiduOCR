@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,11 +18,13 @@ import com.baidu.ocr.sdk.model.IDCardResult
 import com.baidu.ocr.ui.camera.CameraActivity
 import com.baidu.ocr.ui.camera.CameraNativeHelper
 import com.baidu.ocr.ui.camera.CameraView
+import com.blankj.utilcode.util.ImageUtils
 import com.blankj.utilcode.util.PathUtils
 import com.maple.baiduocr.R
 import java.io.File
 
 class IDCardActivity :AppCompatActivity(), View.OnClickListener {
+    private var ivImg: ImageView? = null
     private var tvContent:TextView? = null
     private val type:Int = 0
 
@@ -29,6 +32,7 @@ class IDCardActivity :AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_id_card)
 
+        ivImg = this.findViewById(R.id.iv_img)
         tvContent = this.findViewById(R.id.tv_content)
         this.findViewById<Button>(R.id.btn_idCardA)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_idCardB)?.setOnClickListener(this)
@@ -127,6 +131,8 @@ class IDCardActivity :AppCompatActivity(), View.OnClickListener {
         param.isDetectDirection = true
         // 设置图像参数压缩质量0-100, 越大图像质量越好但是请求时间越长。 不设置则默认值为20
         param.imageQuality = 20
+
+        ivImg?.setImageBitmap(ImageUtils.getBitmap(filePath))
         OCR.getInstance(this).recognizeIDCard(param,object : OnResultListener<IDCardResult>{
             override fun onResult(result: IDCardResult?) {
                 result?.let {
