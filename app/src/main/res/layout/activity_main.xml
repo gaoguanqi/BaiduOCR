@@ -42,4 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="通用票据" />
+
+    <Button
+        android:id="@+id/btn_shared_element"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="共享元素" />
 </LinearLayout>

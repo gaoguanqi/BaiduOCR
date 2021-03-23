@@ -14,6 +14,7 @@ import com.baidu.ocr.sdk.model.AccessToken
 import com.baidu.ocr.ui.camera.CameraNativeHelper
 import com.baidu.ocr.ui.camera.CameraView
 import com.maple.baiduocr.example.*
+import com.maple.baiduocr.shared.SharedElementActivity
 import com.maple.baiduocr.utils.LogUtils
 import com.maple.baiduocr.utils.PermissionUtil
 import com.maple.baiduocr.utils.RequestPermission
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         this.findViewById<Button>(R.id.btn_qrcode)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_license_plate)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_receipt)?.setOnClickListener(this)
+        this.findViewById<Button>(R.id.btn_shared_element)?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -60,6 +62,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_receipt ->{
                 applyPermissions(5)
+            }
+
+            R.id.btn_shared_element ->{
+                startActivity(Intent(this,SharedElementActivity::class.java))
             }
         }
     }
