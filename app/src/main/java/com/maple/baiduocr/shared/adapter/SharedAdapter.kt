@@ -33,7 +33,7 @@ class SharedAdapter(val context: Context) : RecyclerView.Adapter<SharedAdapter.V
         val holder: ViewHolder = ViewHolder(view)
         holder.itemRoot.setOnClickListener {
             listener?.let { l ->
-                l.onItemClick(holder.adapterPosition, list.get(holder.adapterPosition))
+                l.onItemClick(holder.ivImg,holder.adapterPosition, list.get(holder.adapterPosition))
             }
         }
         return holder
@@ -55,12 +55,12 @@ class SharedAdapter(val context: Context) : RecyclerView.Adapter<SharedAdapter.V
             tvTxt.text = "item-${pos}"
             data?.let {
                 LogUtils.logGGQ("--url->${it}")
-                ivImg.loadImage(it)
+                ivImg.loadImage(context,it)
             }
         }
     }
 
     interface OnClickListener {
-        fun onItemClick(pos: Int, item: String?)
+        fun onItemClick(view:View,pos: Int, item: String?)
     }
 }

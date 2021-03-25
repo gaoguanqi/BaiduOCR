@@ -1,16 +1,7 @@
 package com.maple.baiduocr.app
 
 import android.app.Application
-import android.os.Handler
-import android.os.Looper
-import com.baidu.ocr.sdk.OCR
-import com.baidu.ocr.sdk.OnResultListener
-import com.baidu.ocr.sdk.exception.OCRError
-import com.baidu.ocr.sdk.model.AccessToken
 import com.blankj.utilcode.util.Utils
-import com.maple.baiduocr.utils.LogUtils
-import com.maple.ximageloader.ImageLoader
-import com.maple.ximageloader.glide.MyAppGlideModule
 
 
 class MyApplication : Application() {
@@ -27,9 +18,10 @@ class MyApplication : Application() {
         initSDK()
     }
 
+    //
     private fun initSDK() {
 
-
+    //原始的
         // 延时执行
 //        Handler(Looper.getMainLooper()).postDelayed(Runnable {
 //            OCR.getInstance(this).initAccessToken(object : OnResultListener<AccessToken> {

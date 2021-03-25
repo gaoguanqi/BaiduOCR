@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
+        android:networkSecurityConfig="@xml/public_network_security_config"
         android:name="com.maple.baiduocr.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -48,6 +49,20 @@
 
         <activity android:name=".shared.SharedElementActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".shared.PreviewActivity"
+            android:theme="@style/TransitionsTheme"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

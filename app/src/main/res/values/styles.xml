@@ -7,4 +7,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TransitionsTheme" parent="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
 </resources>
