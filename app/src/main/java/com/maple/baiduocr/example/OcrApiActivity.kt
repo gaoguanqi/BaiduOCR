@@ -247,6 +247,11 @@ class OcrApiActivity : AppCompatActivity() {
     }
 
     private fun ocrImg(imgURL: String) {
+        if(TextUtils.isEmpty(accessToken)){
+            showToast("先获取token")
+            return
+        }
+
         OkGo.post<String>(Config.OCR_URL + "/rest/2.0/ocr/v1/idcard")
             .tag(this)
             .params("id_card_side", "front")
