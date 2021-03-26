@@ -44,6 +44,12 @@
         android:text="通用票据" />
 
     <Button
+        android:id="@+id/btn_ocr_api"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="api方式调用" />
+
+    <Button
         android:id="@+id/btn_shared_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

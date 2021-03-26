@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         this.findViewById<Button>(R.id.btn_qrcode)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_license_plate)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_receipt)?.setOnClickListener(this)
+        this.findViewById<Button>(R.id.btn_ocr_api)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_shared_element)?.setOnClickListener(this)
     }
 
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_receipt ->{
                 applyPermissions(5)
+            }
+
+            R.id.btn_ocr_api ->{
+                startActivity(Intent(this,OcrApiActivity::class.java))
             }
 
             R.id.btn_shared_element ->{
