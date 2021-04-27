@@ -4,21 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.baidu.ocr.sdk.OCR
-import com.baidu.ocr.sdk.OnResultListener
-import com.baidu.ocr.sdk.exception.OCRError
-import com.baidu.ocr.sdk.model.AccessToken
-import com.baidu.ocr.ui.camera.CameraNativeHelper
-import com.baidu.ocr.ui.camera.CameraView
 import com.maple.baiduocr.example.*
 import com.maple.baiduocr.shared.SharedElementActivity
 import com.maple.baiduocr.utils.LogUtils
 import com.maple.baiduocr.utils.PermissionUtil
 import com.maple.baiduocr.utils.RequestPermission
 import com.tbruyelle.rxpermissions2.RxPermissions
+import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -37,6 +31,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         this.findViewById<Button>(R.id.btn_receipt)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_ocr_api)?.setOnClickListener(this)
         this.findViewById<Button>(R.id.btn_shared_element)?.setOnClickListener(this)
+
+        val date = Date()
+        val myear = date.year - 100
+        LogUtils.logGGQ("myear:${date.year}")
+        LogUtils.logGGQ("myear:${myear}")
     }
 
     override fun onClick(v: View?) {
